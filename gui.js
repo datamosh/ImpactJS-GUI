@@ -41,6 +41,10 @@ ig.module('plugins.gui')
 					hideGroup, name
 					remove, name
 					removeGroup, name
+					enable, name
+					enableGroup, name
+					disable, name
+					disableGroup, name
 			*/
 			action: function(action, name) {
 				var collection = [];
@@ -69,6 +73,18 @@ ig.module('plugins.gui')
 					// removeGroup
 					if(action == 'removeGroup' && ig.gui.buttons[i].group == name)
 						ig.gui.buttons.erase(ig.gui.buttons[i]);
+					// enable
+					if(action == 'enable' && ig.gui.buttons[i].name == name)
+						ig.gui.buttons[i].disable = false;
+					// enableGroup
+					if(action == 'enableGroup' && ig.gui.buttons[i].group == name)
+						ig.gui.buttons[i].disable = false;
+					// disable
+					if(action == 'enable' && ig.gui.buttons[i].name == name)
+						ig.gui.buttons[i].disable = true;
+					// disableGroup
+					if(action == 'enableGroup' && ig.gui.buttons[i].group == name)
+						ig.gui.buttons[i].disable = true;
 				}
 				if(collection.length) return collection;
 			},
@@ -87,7 +103,8 @@ ig.module('plugins.gui')
 					// Check position & state
 					if(button.show == false) continue;
 					if(ig.gui.cursor.pos.x >= button.pos.x && ig.gui.cursor.pos.x <= button.pos.x + button.size.x &&
-						ig.gui.cursor.pos.y >= button.pos.y && ig.gui.cursor.pos.y <= button.pos.y + button.size.y) {
+						ig.gui.cursor.pos.y >= button.pos.y && ig.gui.cursor.pos.y <= button.pos.y + button.size.y &&
+						button.disabled == false) {
 						state = 'hover';
 					}
 					

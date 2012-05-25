@@ -15,7 +15,11 @@
 #### hide `ig.gui.button.action('hide', 'name')`
 #### hideGroup `ig.gui.button.action('hideGroup', 'name');`
 #### remove `ig.gui.button.action('remove', 'name');`
-#### removeGroup `ig.gui.button.action('v', 'name');`
+#### removeGroup `ig.gui.button.action('removeGroup', 'name');`
+#### enable `ig.gui.button.action('enable', 'name');`
+#### enableGroup `ig.gui.button.action('enableGroup', 'name');`
+#### disable `ig.gui.button.action('disable', 'name');`
+#### disableGroup `ig.gui.button.action('disableGroup', 'name');`
 
 ### Quick button:
 ```
@@ -43,6 +47,7 @@ ig.gui.button.add({
 	group: 'mygroup',
 	size: { x: 32, y: 32 },
 	pos: { x: 15, y: 10 },
+	disabled: false,
 	state: {
 		normal: {
 			image: new ig.Image('media/buttons.png'),
