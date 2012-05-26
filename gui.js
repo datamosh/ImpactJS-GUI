@@ -90,7 +90,10 @@ ig.module('plugins.gui')
 					if(action == 'disableAll')
 						ig.gui.elements[i].disable = true;
 				}
-				if(collection.length) return collection;
+				if(collection.length) {
+					if(collection.length == 1) collection = collection[0];
+					return collection;
+				}
 			},
 
 			add: function(element) {
@@ -124,7 +127,7 @@ ig.module('plugins.gui')
 						state = 'normal';
 
 					// Alpha
-					if(element.alpha != undefined) image.image.alpha = 0.3;
+					if(element.alpha != undefined) ig.system.context.globalAlpha = element.alpha;
 
 					// Image
 					var image = ig.gui.elements[i].state[state];
@@ -133,6 +136,8 @@ ig.module('plugins.gui')
 					} else {
 						image.image.drawTile(element.pos.x, element.pos.y, image.tile, image.tileSize);
 					}
+
+					ig.system.context.globalAlpha = 1;
 				}
 			}
 		},
