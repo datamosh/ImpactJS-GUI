@@ -96,7 +96,7 @@ ig.gui.element.add({
 		// Mouse down!
 	},
 	click: function() {
-		// Click!
+		console.log(this); // Print this button ;)
 	}
 })
 ```

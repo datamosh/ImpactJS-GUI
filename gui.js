@@ -119,13 +119,15 @@ ig.module('plugins.gui')
 					// Pressed
 					if(state == 'hover' && (ig.input.state('mouse1') || ig.input.pressed('mouse1'))) {
 						state = 'active';
-						if(ig.input.state('mouse1') && typeof ig.gui.elements[i].mouseDown == 'function') ig.gui.elements[i].mouseDown.call();
+						if(ig.input.state('mouse1') && typeof ig.gui.elements[i].mouseDown == 'function')
+							ig.gui.elements[i].mouseDown.call(element);
 						if(ig.input.pressed('mouse1')) {
-							if(typeof ig.gui.elements[i].click == 'function')
-								ig.gui.elements[i].click.call();
 							// Toggle (click)
 							if(element.toggle)
 								element.active = !element.active;
+							// Click function
+							if(typeof ig.gui.elements[i].click == 'function')
+								ig.gui.elements[i].click.call(element);
 						}
 					}
 
