@@ -8,18 +8,19 @@
 
 ### Functions:
 
-#### getByName `ig.gui.button.action('getByName', 'name');`
-#### getByGroup `ig.gui.button.action('getByGroup', 'name');`
-#### show `ig.gui.button.action('show', 'name')`
-#### showGroup `ig.gui.button.action('showGroup', 'name');`
-#### hide `ig.gui.button.action('hide', 'name')`
-#### hideGroup `ig.gui.button.action('hideGroup', 'name');`
-#### remove `ig.gui.button.action('remove', 'name');`
-#### removeGroup `ig.gui.button.action('removeGroup', 'name');`
-#### enable `ig.gui.button.action('enable', 'name');`
-#### enableGroup `ig.gui.button.action('enableGroup', 'name');`
-#### disable `ig.gui.button.action('disable', 'name');`
-#### disableGroup `ig.gui.button.action('disableGroup', 'name');`
+##### getByName `ig.gui.button.action('getByName', 'name');`
+##### getByGroup `ig.gui.button.action('getByGroup', 'name');`
+##### show `ig.gui.button.action('show', 'name')`
+##### showGroup `ig.gui.button.action('showGroup', 'name');`
+##### hide `ig.gui.button.action('hide', 'name')`
+##### hideGroup `ig.gui.button.action('hideGroup', 'name');`
+##### remove `ig.gui.button.action('remove', 'name');`
+##### removeGroup `ig.gui.button.action('removeGroup', 'name');`
+##### enable `ig.gui.button.action('enable', 'name');`
+##### enableGroup `ig.gui.button.action('enableGroup', 'name');`
+##### disable `ig.gui.button.action('disable', 'name');`
+##### disableGroup `ig.gui.button.action('disableGroup', 'name');`
+##### disableAll `ig.gui.button.action('disableAll');`
 
 ### Quick button:
 ```

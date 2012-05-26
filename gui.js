@@ -45,6 +45,7 @@ ig.module('plugins.gui')
 					enableGroup, name
 					disable, name
 					disableGroup, name
+					disableAll
 			*/
 			action: function(action, name) {
 				var collection = [];
@@ -84,6 +85,9 @@ ig.module('plugins.gui')
 						ig.gui.buttons[i].disable = true;
 					// disableGroup
 					if(action == 'enableGroup' && ig.gui.buttons[i].group == name)
+						ig.gui.buttons[i].disable = true;
+					// disableAll
+					if(action == 'disableAll')
 						ig.gui.buttons[i].disable = true;
 				}
 				if(collection.length) return collection;
