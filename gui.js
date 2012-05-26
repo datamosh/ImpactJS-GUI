@@ -99,6 +99,7 @@ ig.module('plugins.gui')
 			add: function(element) {
 				if(element.show == undefined) element.show = true;
 				if(element.disabled == undefined) element.disabled = false;
+				if(element.active == undefined) element.active = false;
 				ig.gui.elements.push(element);
 			},
 
@@ -108,10 +109,10 @@ ig.module('plugins.gui')
 						state = 'normal';
 
 					// Check position & state
-					if(element.show == false) continue;
+					if(!element.show) continue;
 					if(ig.gui.cursor.pos.x >= element.pos.x && ig.gui.cursor.pos.x <= element.pos.x + element.size.x &&
 						ig.gui.cursor.pos.y >= element.pos.y && ig.gui.cursor.pos.y <= element.pos.y + element.size.y &&
-						element.disabled == false) {
+						!element.disabled) {
 						state = 'hover';
 					}
 					
@@ -119,15 +120,26 @@ ig.module('plugins.gui')
 					if(state == 'hover' && (ig.input.state('mouse1') || ig.input.pressed('mouse1'))) {
 						state = 'active';
 						if(ig.input.state('mouse1') && typeof ig.gui.elements[i].mouseDown == 'function') ig.gui.elements[i].mouseDown.call();
-						if(ig.input.pressed('mouse1') && typeof ig.gui.elements[i].click == 'function') ig.gui.elements[i].click.call();
+						if(ig.input.pressed('mouse1')) {
+							if(typeof ig.gui.elements[i].click == 'function')
+								ig.gui.elements[i].click.call();
+							// Toggle (click)
+							if(element.toggle)
+								element.active = !element.active;
+						}
 					}
+
+					// Toggle (state)
+					if(element.toggle && element.active)
+						state = 'active';
 
 					// Default state
 					if(ig.gui.elements[i].state[state] == undefined)
 						state = 'normal';
 
 					// Alpha
-					if(element.alpha != undefined) ig.system.context.globalAlpha = element.alpha;
+					if(element.alpha != undefined)
+						ig.system.context.globalAlpha = element.alpha;
 
 					// Image
 					var image = ig.gui.elements[i].state[state];
@@ -137,6 +149,7 @@ ig.module('plugins.gui')
 						image.image.drawTile(element.pos.x, element.pos.y, image.tile, image.tileSize);
 					}
 
+					// Restore
 					ig.system.context.globalAlpha = 1;
 				}
 			}

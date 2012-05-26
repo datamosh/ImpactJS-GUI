@@ -8,6 +8,7 @@
 
 ### Functions:
 
+##### add: `ig.gui.element.add(properties);`
 ##### getByName `ig.gui.element.action('getByName', 'name');`
 ##### getByGroup `ig.gui.element.action('getByGroup', 'name');`
 ##### show `ig.gui.element.action('show', 'name')`
@@ -22,7 +23,29 @@
 ##### disableGroup `ig.gui.element.action('disableGroup', 'name');`
 ##### disableAll `ig.gui.element.action('disableAll');`
 
+
+### Add properties
+
+```
+name: Element name
+group: Group name
+size: Size of element
+pos: Position to place this element on screen
+disabled: Avoids behaviors and state changes
+alpha: Specifies the alpha transparency. The default is 1 (fully opaque).
+toggle: Changes state and remains there until you click. The default is false
+active: Toggle initial state. Default is false,
+mouseDown: Sets a function that runs continuously while the mouse button is pressed
+click: Sets a function that runs every time you press the mouse button
+state: Allows state and behavior changes
+	normal: Normal state of element (Required, other states: **hover** and **active**)
+		image: Image resource.
+		tile: Number of tile. (Optional, you can use a simple image)
+		tileSize: Tile size
+```
+
 ### Quick button:
+
 ```
 ig.gui.element.add({
 	name: 'button_name',
@@ -50,6 +73,8 @@ ig.gui.element.add({
 	pos: { x: 15, y: 10 },
 	disabled: false,
 	alpha: 0.5,
+	toggle: true,
+	active: false,
 	state: {
 		normal: {
 			image: new ig.Image('media/buttons.png'),
