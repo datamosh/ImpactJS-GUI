@@ -4,29 +4,29 @@
 - On your draw code: `if(ig.gui.show) ig.gui.draw();`
 - Boom. Easy-GUI
 
-## Buttons
+## Elements
 
 ### Functions:
 
-##### getByName `ig.gui.button.action('getByName', 'name');`
-##### getByGroup `ig.gui.button.action('getByGroup', 'name');`
-##### show `ig.gui.button.action('show', 'name')`
-##### showGroup `ig.gui.button.action('showGroup', 'name');`
-##### hide `ig.gui.button.action('hide', 'name')`
-##### hideGroup `ig.gui.button.action('hideGroup', 'name');`
-##### remove `ig.gui.button.action('remove', 'name');`
-##### removeGroup `ig.gui.button.action('removeGroup', 'name');`
-##### enable `ig.gui.button.action('enable', 'name');`
-##### enableGroup `ig.gui.button.action('enableGroup', 'name');`
-##### disable `ig.gui.button.action('disable', 'name');`
-##### disableGroup `ig.gui.button.action('disableGroup', 'name');`
-##### disableAll `ig.gui.button.action('disableAll');`
+##### getByName `ig.gui.element.action('getByName', 'name');`
+##### getByGroup `ig.gui.element.action('getByGroup', 'name');`
+##### show `ig.gui.element.action('show', 'name')`
+##### showGroup `ig.gui.element.action('showGroup', 'name');`
+##### hide `ig.gui.element.action('hide', 'name')`
+##### hideGroup `ig.gui.element.action('hideGroup', 'name');`
+##### remove `ig.gui.element.action('remove', 'name');`
+##### removeGroup `ig.gui.element.action('removeGroup', 'name');`
+##### enable `ig.gui.element.action('enable', 'name');`
+##### enableGroup `ig.gui.element.action('enableGroup', 'name');`
+##### disable `ig.gui.element.action('disable', 'name');`
+##### disableGroup `ig.gui.element.action('disableGroup', 'name');`
+##### disableAll `ig.gui.element.action('disableAll');`
 
 ### Quick button:
 ```
-ig.gui.button.add({
-	name: 'minibutton',
-	group: 'minigroup',
+ig.gui.element.add({
+	name: 'button_name',
+	group: 'group_name',
 	size: { x: 28, y: 56 },
 	pos: { x: 0, y: 37 },
 	state: {
@@ -40,15 +40,16 @@ ig.gui.button.add({
 })
 ```
 
-### Full example:
+### Full example
 
 ```
-ig.gui.button.add({
-	name: 'supername',
-	group: 'mygroup',
+ig.gui.element.add({
+	name: 'button_name',
+	group: 'group_name',
 	size: { x: 32, y: 32 },
 	pos: { x: 15, y: 10 },
 	disabled: false,
+	alpha: 0.5,
 	state: {
 		normal: {
 			image: new ig.Image('media/buttons.png'),
@@ -75,12 +76,18 @@ ig.gui.button.add({
 })
 ```
 
+### Change properties
+
+```
+(ig.gui.element.action('getByName', 'button_name')).alpha = 0.5;
+```
+
 ## Cursor
 
 ### Functions:
 
-#### set `ig.gui.cursor.set(image);`
-#### clear `ig.gui.cursor.clear();`
+##### set `ig.gui.cursor.set(image);`
+##### clear `ig.gui.cursor.clear();`
 
 
 ## More information?
