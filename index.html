@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>ImpactJS-GUI by datamosh</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>ImpactJS-GUI</h1>
+        <p>Easy GUI for ImpactJS</p>
+        <p class="view"><a href="https://github.com/datamosh/ImpactJS-GUI">View the Project on GitHub <small>datamosh/ImpactJS-GUI</small></a></p>
+        <ul>
+          <li><a href="https://github.com/datamosh/ImpactJS-GUI/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/datamosh/ImpactJS-GUI/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/datamosh/ImpactJS-GUI">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>Installation</h2>
+
+<ul>
+<li>Copy <code>gui.js</code> to <code>lib/plugins/</code>
+</li>
+<li>Add plugin in main.js: <code>'plugins.gui'</code>
+</li>
+<li>On your draw code: <code>if(ig.gui.show) ig.gui.draw();</code>
+</li>
+<li>Boom. Easy-GUI</li>
+</ul><h2>Elements</h2>
+
+<h3>Functions:</h3>
+
+<h5>add: <code>ig.gui.element.add(properties);</code>
+</h5>
+
+<h5>getByName <code>ig.gui.element.action('getByName', 'name');</code>
+</h5>
+
+<h5>getByGroup <code>ig.gui.element.action('getByGroup', 'name');</code>
+</h5>
+
+<h5>show <code>ig.gui.element.action('show', 'name')</code>
+</h5>
+
+<h5>showGroup <code>ig.gui.element.action('showGroup', 'name');</code>
+</h5>
+
+<h5>hide <code>ig.gui.element.action('hide', 'name')</code>
+</h5>
+
+<h5>hideGroup <code>ig.gui.element.action('hideGroup', 'name');</code>
+</h5>
+
+<h5>remove <code>ig.gui.element.action('remove', 'name');</code>
+</h5>
+
+<h5>removeGroup <code>ig.gui.element.action('removeGroup', 'name');</code>
+</h5>
+
+<h5>enable <code>ig.gui.element.action('enable', 'name');</code>
+</h5>
+
+<h5>enableGroup <code>ig.gui.element.action('enableGroup', 'name');</code>
+</h5>
+
+<h5>disable <code>ig.gui.element.action('disable', 'name');</code>
+</h5>
+
+<h5>disableGroup <code>ig.gui.element.action('disableGroup', 'name');</code>
+</h5>
+
+<h5>disableAll <code>ig.gui.element.action('disableAll');</code>
+</h5>
+
+<h3>Add properties</h3>
+
+<pre><code>name: Element name
+group: Group name
+size: Size of element
+pos: Position to place this element on screen
+disabled: Avoids behaviors and state changes
+alpha: Specifies the alpha transparency. The default is 1 (fully opaque).
+toggle: Changes state and remains there until you click. The default is false
+active: Toggle initial state. Default is false,
+mouseDown: Sets a function that runs continuously while the mouse button is pressed
+click: Sets a function that runs every time you press the mouse button
+state: Allows state and behavior changes
+    normal: Normal state of element (Required, other states: **hover** and **active**)
+        image: Image resource.
+        tile: Number of tile. (Optional, you can use a simple image)
+        tileSize: Tile size
+</code></pre>
+
+<h3>Quick button:</h3>
+
+<pre><code>ig.gui.element.add({
+    name: 'button_name',
+    group: 'group_name',
+    size: { x: 28, y: 56 },
+    pos: { x: 0, y: 37 },
+    state: {
+        normal: {
+            image: new ig.Image('media/minibutton.png')
+        }
+    },
+    click: function() {
+        // Action!
+    }
+})
+</code></pre>
+
+<h3>Full example</h3>
+
+<pre><code>ig.gui.element.add({
+    name: 'button_name',
+    group: 'group_name',
+    size: { x: 32, y: 32 },
+    pos: { x: 15, y: 10 },
+    disabled: false,
+    alpha: 0.5,
+    toggle: true,
+    active: false,
+    state: {
+        normal: {
+            image: new ig.Image('media/buttons.png'),
+            tile: 3,
+            tileSize: 32
+        },
+        hover: {
+            image: new ig.Image('media/buttons.png'),
+            tile: 4,
+            tileSize: 32
+        },
+        active: {
+            image: new ig.Image('media/buttons.png'),
+            tile: 5,
+            tileSize: 32
+        }
+    },
+    mouseDown: function() {
+        // Mouse down!
+    },
+    click: function() {
+        console.log(this); // Print this button ;)
+    }
+})
+</code></pre>
+
+<h3>Change properties</h3>
+
+<pre><code>(ig.gui.element.action('getByName', 'button_name')).alpha = 0.5;
+</code></pre>
+
+<h2>Cursor</h2>
+
+<h3>Functions:</h3>
+
+<h5>set <code>ig.gui.cursor.set(image);</code>
+</h5>
+
+<h5>clear <code>ig.gui.cursor.clear();</code>
+</h5>
+
+<h2>More information?</h2>
+
+<ul>
+<li><a href="http://impactjs.com/forums/code/impact-gui">Impact forum post</a></li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/datamosh">datamosh</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
