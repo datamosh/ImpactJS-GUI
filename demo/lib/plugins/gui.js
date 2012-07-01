@@ -159,13 +159,13 @@ ig.module('plugins.gui')
 
 		// Draw
 		draw: function() {
+			this.element.draw();
 			// Capture mouse
 			this.cursor.pos = {
 				x: ig.input.mouse.x,
 				y: ig.input.mouse.y
 			}
 			this.cursor.draw();
-			this.element.draw();
 		}
 	}
 

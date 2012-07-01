@@ -20,6 +20,7 @@ MyGame = ig.Game.extend({
 	
 	// Load a font
 	font: new ig.Font( 'media/04b03.font.png' ),
+	crosshair: new ig.Image('media/crosshair.png'),
 	pause: false,
 	player: null,
 	
@@ -32,6 +33,14 @@ MyGame = ig.Game.extend({
 
 		joystick();
 		
+		// Set cursor
+		ig.gui.cursor.set(this.crosshair);
+		// Cursor offset (hotspot fix)
+		ig.gui.cursor.offset = {
+			x: 8,
+			y: 8
+		}
+
 		// Load the LevelTest as required above ('game.level.test')
 		this.loadLevel( LevelTest );
 	},
