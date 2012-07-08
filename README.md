@@ -15,6 +15,8 @@
 ##### showGroup `ig.gui.element.action('showGroup', 'name');`
 ##### hide `ig.gui.element.action('hide', 'name')`
 ##### hideGroup `ig.gui.element.action('hideGroup', 'name');`
+##### toggle `ig.gui.element.action('toggle', 'name');`
+##### toggleGroup `ig.gui.element.action('toggleGroup', 'name');`
 ##### remove `ig.gui.element.action('remove', 'name');`
 ##### removeGroup `ig.gui.element.action('removeGroup', 'name');`
 ##### enable `ig.gui.element.action('enable', 'name');`
@@ -29,6 +31,12 @@
 ```
 name: Element name
 group: Group name
+title: Element title. Shown in the lower-left of the element if enabled.
+keybind: Element bound key. Allows a key to activate the button as well as the mouse. (must be the name that the key is bound with in Main.js)
+showTitle: Show the element's title on the element. The default is false
+showBind: Show the key bound to the element. The default is false (it simply shows the name of the key that is bound in Main.js)
+count: An integer attached to the element, can be used for various purposes.
+icon: An icon to be shown on top of the element, during all states.
 size: Size of element
 pos: Position to place this element on screen
 disabled: Avoids behaviors and state changes
@@ -69,6 +77,11 @@ ig.gui.element.add({
 ig.gui.element.add({
 	name: 'button_name',
 	group: 'group_name',
+	title: 'button_title',
+	showTitle: true,
+	keybind: 'button_key',
+	showBind: true,
+	icon: new ig.Image('media/icon.png'),
 	size: { x: 32, y: 32 },
 	pos: { x: 15, y: 10 },
 	disabled: false,
