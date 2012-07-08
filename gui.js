@@ -26,6 +26,8 @@ ig.module('plugins.gui')
 			draw: function() {
 				if(this.image != null)
 					this.image.draw(this.pos.x - this.offset.x, this.pos.y - this.offset.y);
+				if(this.icon != null)
+					this.icon.draw(this.pos.x - this.offset.x, this.pos.y - this.offset.y);
 			}
 		},
 
@@ -39,6 +41,8 @@ ig.module('plugins.gui')
 					showGroup, name
 					hide, name
 					hideGroup, name
+					toggle, name
+					toggleGroup, name
 					remove, name
 					removeGroup, name
 					enable, name
@@ -68,6 +72,22 @@ ig.module('plugins.gui')
 					// hideGroup
 					if(action == 'hideGroup' && ig.gui.elements[i].group == name)
 						ig.gui.elements[i].show = false;
+					// toggle
+					if(action == 'toggle' && ig.gui.elements[i].name == name) {
+						if (ig.gui.elements[i].show) {
+							ig.gui.elements[i].show = false;
+						} else {
+							ig.gui.elements[i].show = true;
+						}
+					}
+					// toggleGroup
+					if(action == 'toggleGroup' && ig.gui.elements[i].group == name) {
+						if (ig.gui.elements[i].show) {
+							ig.gui.elements[i].show = false;
+						} else {
+							ig.gui.elements[i].show = true;
+						}
+					}
 					// remove
 					if(action == 'remove' && ig.gui.elements[i].name == name)
 						ig.gui.elements.erase(ig.gui.elements[i]);
@@ -100,6 +120,9 @@ ig.module('plugins.gui')
 				if(element.show == undefined) element.show = true;
 				if(element.disabled == undefined) element.disabled = false;
 				if(element.active == undefined) element.active = false;
+				if(element.showTitle == undefined || (element.font == undefined)) element.showTitle = false;
+				if(element.showBind == undefined || (element.font == undefined)) element.showBind = false;
+				
 				ig.gui.elements.push(element);
 			},
 
@@ -116,8 +139,8 @@ ig.module('plugins.gui')
 						state = 'hover';
 					}
 					
-					// Pressed
-					if(state == 'hover' && (ig.input.state('mouse1') || ig.input.pressed('mouse1'))) {
+					// Pressed by Mouse OR Keybind
+					if((state == 'hover' && (ig.input.state('mouse1') || ig.input.pressed('mouse1'))) || (ig.input.pressed(element.keybind))) {
 						state = 'active';
 						if(ig.input.state('mouse1') && typeof ig.gui.elements[i].mouseDown == 'function')
 							ig.gui.elements[i].mouseDown.call(element);
@@ -150,7 +173,24 @@ ig.module('plugins.gui')
 					} else {
 						image.image.drawTile(element.pos.x, element.pos.y, image.tile, image.tileSize);
 					}
-
+					// Icon
+					var icon = ig.gui.elements[i].icon;
+					if (element.icon) {
+						icon.draw(element.pos.x, element.pos.y);
+					}
+					// Show Bind
+					if (element.showBind && element.font) {
+						element.font.draw(element.keybind.substr(0,4).toUpperCase(),element.pos.x+element.size.x-2, element.pos.y, ig.Font.ALIGN.RIGHT);
+					}
+					// Show Title
+					if (element.showTitle && element.font) {
+						element.font.draw(element.title.toUpperCase(), element.pos.x+3, (element.pos.y+element.size.y)-(element.font.height-2), ig.Font.ALIGN.LEFT);
+					}
+					// Show Count
+					if (element.count > 1 && element.font) {
+						element.font.draw(element.count,(element.pos.x+element.size.x)-2,(element.pos.y+element.size.y)-(element.font.height-2), ig.Font.ALIGN.RIGHT);
+					}
+					
 					// Restore
 					ig.system.context.globalAlpha = 1;
 				}
