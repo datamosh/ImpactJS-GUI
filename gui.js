@@ -104,7 +104,7 @@ ig.module('plugins.gui')
 					if(action == 'enable' && ig.gui.elements[i].name == name)
 						ig.gui.elements[i].disable = true;
 					// disableGroup
-					if(action == 'enableGroup' && ig.gui.elements[i].group == name)
+					if(action == 'disableGroup' && ig.gui.elements[i].group == name)
 						ig.gui.elements[i].disable = true;
 					// disableAll
 					if(action == 'disableAll')
