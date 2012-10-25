@@ -74,19 +74,17 @@ ig.module('plugins.gui')
 						ig.gui.elements[i].show = false;
 					// toggle
 					if(action == 'toggle' && ig.gui.elements[i].name == name) {
-						if (ig.gui.elements[i].show) {
+						if (ig.gui.elements[i].show)
 							ig.gui.elements[i].show = false;
-						} else {
+						else
 							ig.gui.elements[i].show = true;
-						}
 					}
 					// toggleGroup
 					if(action == 'toggleGroup' && ig.gui.elements[i].group == name) {
-						if (ig.gui.elements[i].show) {
+						if (ig.gui.elements[i].show)
 							ig.gui.elements[i].show = false;
-						} else {
+						else
 							ig.gui.elements[i].show = true;
-						}
 					}
 					// remove
 					if(action == 'remove' && ig.gui.elements[i].name == name)
@@ -101,7 +99,7 @@ ig.module('plugins.gui')
 					if(action == 'enableGroup' && ig.gui.elements[i].group == name)
 						ig.gui.elements[i].disable = false;
 					// disable
-					if(action == 'enable' && ig.gui.elements[i].name == name)
+					if(action == 'disable' && ig.gui.elements[i].name == name)
 						ig.gui.elements[i].disable = true;
 					// disableGroup
 					if(action == 'disableGroup' && ig.gui.elements[i].group == name)
