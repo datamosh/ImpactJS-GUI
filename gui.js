@@ -142,7 +142,7 @@ ig.module('plugins.gui')
 						state = 'active';
 						if(ig.input.state('mouse1') && typeof ig.gui.elements[i].mouseDown == 'function')
 							ig.gui.elements[i].mouseDown.call(element);
-						if(ig.input.pressed('mouse1')) {
+						if(ig.input.pressed('mouse1') || ig.input.pressed(element.keybind)) {
 							// Toggle (click)
 							if(element.toggle)
 								element.active = !element.active;
