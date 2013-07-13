@@ -127,6 +127,11 @@ ig.gui.element.add({
 ##### set `ig.gui.cursor.set(image);`
 ##### clear `ig.gui.cursor.clear();`
 
+### Mouse binds *(Important!)*:
+
+The plugin binds *left button* to *mouse1*.   
+If your click doesn't work maybe this is the problem!   
+https://github.com/datamosh/ImpactJS-GUI/issues/4
 
 ## More information?
 
