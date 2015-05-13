@@ -137,6 +137,8 @@ ig.module('plugins.gui')
 				if(element.showTitle == undefined || (element.font == undefined)) element.showTitle = false;
 				if(element.showBind == undefined || (element.font == undefined)) element.showBind = false;
 				if(element.selected == undefined) element.selected = false;
+				if(element.animSheet != undefined)
+					element.anims = [];
 
 				ig.gui.elements.push(element);
 			},
