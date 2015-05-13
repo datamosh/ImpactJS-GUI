@@ -137,6 +137,8 @@ ig.module('plugins.gui')
 				if(element.showTitle == undefined || (element.font == undefined)) element.showTitle = false;
 				if(element.showBind == undefined || (element.font == undefined)) element.showBind = false;
 				if(element.selected == undefined) element.selected = false;
+				if(element.animSheet != undefined)
+					element.anims = [];
 
 				ig.gui.elements.push(element);
 			},
@@ -182,8 +184,21 @@ ig.module('plugins.gui')
 
 					// Image
 					var image = ig.gui.elements[i].state[state];
-					if(isNaN(image.tile) || isNaN(image.tileSize))
+					if(isNaN(image.tile) || isNaN(image.tileSize)){
 						image.image.draw(element.pos.x, element.pos.y);
+						if(element.animSheet != undefined){
+							if(element.anims[state] == undefined){
+								var a = new ig.Animation( state, element.animSheet, image.animFrameTime, image.animSequence, image.animStop );
+								element.anims[state] = a;
+								if(element.currentAnim == undefined)
+									element.currentAnim = a
+							}
+							if(element.currentAnim != element.anims[state])
+								element.currentAnim = element.anims[state].rewind();
+							element.currentAnim.update();
+							element.currentAnim.draw(element.pos.x,element.pos.y);
+						}
+					}
 					else
 						image.image.drawTile(element.pos.x, element.pos.y, image.tile, image.tileSize);
 					// Icon
